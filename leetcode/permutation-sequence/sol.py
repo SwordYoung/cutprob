@@ -12,7 +12,7 @@ class Solution:
             sk.append(True)
         
         kl = k-1
-        res = []
+        res = ""
         for i in range(n,0,-1):
             l = (kl/p[i-1])
             kl = kl%p[i-1]
@@ -25,7 +25,7 @@ class Solution:
             ji -= 1
             assert sk[ji]
             sk[ji] = False
-            res.append(ji+1)
+            res += "%d" % (ji+1)
         return res
 
 def test(n, k):
