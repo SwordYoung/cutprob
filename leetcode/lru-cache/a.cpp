@@ -38,12 +38,13 @@ public:
                 if (it == mHead) {
                     mHead = it->next;
                 } else {
-                it->prev->next = it->next;
+                    it->prev->next = it->next;
                 }
                 it->next->prev = it->prev;
                 mTail->next = it;
                 it->prev = mTail;
                 it->next = NULL;
+                mTail = it;
             }
             return it;
         }
@@ -92,7 +93,9 @@ public:
                 Node* it = mHead;
                 mHead = it->next;
                 mHead->prev = NULL;
-                mDict.erase(it->key);
+		if (key != it->key) {
+                    mDict.erase(it->key);
+                }
                 delete it;
             } else {
                 mSize++;
@@ -102,10 +105,21 @@ public:
 };
 
 int main() {
+    {
     LRUCache cache(1);
     cache.set(2,1);
     cache.get(2);
     cache.set(3,2);
     cache.get(2);
     cache.get(3);
+    }
+    {
+    LRUCache cache(2);
+    cache.set(2,1);
+    cache.set(1,1);
+    cache.get(2);
+    cache.set(4,1);
+    cache.get(1);
+    cache.get(2);
+    }
 }
