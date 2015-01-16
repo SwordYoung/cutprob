@@ -15,7 +15,7 @@ class Solution:
                 res.append(a+[c])
                 if len(a[-1])+1 <= i:
                     final.add(a[-1])
-#             print "final=%s" % (final)
+            print "final=%s" % (final)
             for f in final:
                 fp = i-len(f)-1
                 if s[fp] == c:
@@ -33,7 +33,8 @@ def test(s):
     print "output: %s" % (sol.partition(s))
 
 if __name__ == "__main__":
-    test("bb")
-    test("bbbbb")
-    test("abbbbba")
+    test("aabba")
+    # test("bb")
+    # test("bbbbb")
+    # test("abbbbba")
 
